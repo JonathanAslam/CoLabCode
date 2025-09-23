@@ -1,0 +1,15 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --frozen-lockfile
+
+COPY . .
+
+# Optional: set NODE_ENV for production
+ENV NODE_ENV=production
+
+EXPOSE 5000
+
+CMD ["node", "server.js"]
