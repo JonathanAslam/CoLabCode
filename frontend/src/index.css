@@ -1,68 +1,115 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  /* overflow-x: hidden; */ /* Disable horizontal scrolling */
+  overflow: hidden; /* Disable horizontal and vertical scrolling */
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0; 
+  font-family: 'Oswald', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--main-text-color);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+/* Dark Theme for easy color modification*/
+/* [data-theme="dark"] */ /* uncomment this code and replace the :root if needed later*/
+ 
+:root {
+  /* Base Colors */
+  --primary-blue: #63B3ED;
+  --success-green: #68D391;
+  --medium-gray: #A0AEC0;
+  --error-red: #FC8181;
+  --pure-red: #FF0000; 
+  --dark-red: #742A2A;
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+  /* Greyscale */
+  --black: #000000;
+  --dark-grey: #333333;
+  --grey: #777777;
+  --light-grey: #CCCCCC;
+  --off-white: #F4F4F4;
+  --white: #FFFFFF;
+  --transparent: transparent;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+  /* Accent Colors */
+  --accent-pink: #e91e63;
+  --accent-dark-pink: #c4185b;
+  --accent-purple: #9c27b0;
+  --accent-dark-blue: #272ab0;
+  --accent-blue: #276bb0;
+  --accent-light-blue: #57acdc;
+  --accent-blue-green: #57dcbe;
+  --accent-green: #60C689;
+
+
+  /* Logo */
+  --logo-color: var(--white);
+
+
+  /* Navbar */
+  --navbar-bg: var(--black);
+  --navbar-text: #E2E8F0;
+  --navbar-active: var(--primary-blue);
+  --navbar-hover: var(--accent-pink);
+  --navbar-border: var(--light-gray);
+  --navbar-link-hover: var(--)
+
+  /* Footer */
+  --footer-bg: #171923;
+  --footer-text: #E2E8F0;
+  --footer-links: var(--primary-blue);
+  --footer-links-hover: var(--success-green);
+  --footer-secondary-text: var(--medium-gray);
+
+  /* Buttons */
+  --btn-primary-bg: var(--primary-blue);
+  --btn-primary-text: var(--dark-gray);
+  --btn-primary-hover: #4299E1;
+  --btn-primary-border: var(--primary-blue);
+
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--primary-blue);
+  --btn-secondary-border: var(--primary-blue);
+  --btn-secondary-hover-bg: var(--primary-blue);
+  --btn-secondary-hover-text: var(--dark-gray);
+
+  --btn-success-bg: var(--success-green);
+  --btn-success-text: var(--dark-gray);
+  --btn-success-hover: #48BB78;
+
+  /* Background */
+  --bg-main: var(--black);
+  --bg-section: var(--pure-white);
+  --bg-alternate: #171923;
+
+  /* Page Text */
+  --main-text-color: var(--pure-white);
+  --section-text-color: var(--medium-gray);
+  --alternate-text-color: var(--dark-gray);
+
+
+  /* Input Forms */
+  --input-bg: var(--pure-white);
+  --input-border: var(--light-gray);
+  --input-text: #E2E8F0;
+  --input-placeholder: var(--medium-gray);
+  --input-focus-border: var(--primary-blue);
+  --input-focus-shadow: rgba(99, 179, 237, 0.1);
+
+  --label-text: #E2E8F0;
+  --label-required: var(--error-red);
+
+  --input-error-border: var(--error-red);
+  --input-error-text: var(--error-red);
+  --input-error-bg: var(--light-red);
+
+  --input-success-border: var(--success-green);
+  --input-success-text: var(--success-green);
+
+  /* Hover */
+  --hover-shadow: rgba(var(--pure-red), 1);
+} 
