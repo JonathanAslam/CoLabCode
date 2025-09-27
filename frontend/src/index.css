@@ -30,7 +30,7 @@ body {
   --dark-grey: #333333;
   --grey: #777777;
   --light-grey: #CCCCCC;
-  --off-white: #F4F4F4;
+  --off-white: #FAF9F6;
   --white: #FFFFFF;
   --transparent: transparent;
 
@@ -46,70 +46,69 @@ body {
 
 
   /* Logo */
-  --logo-color: var(--white);
+  --logo-color: var(--light-grey);
 
 
   /* Navbar */
   --navbar-bg: var(--black);
-  --navbar-text: #E2E8F0;
-  --navbar-active: var(--primary-blue);
+  --navbar-text: var(--light-grey);
+  --navbar-active: ;
   --navbar-hover: var(--accent-pink);
-  --navbar-border: var(--light-gray);
-  --navbar-link-hover: var(--)
+  --navbar-border: ;
 
   /* Footer */
-  --footer-bg: #171923;
-  --footer-text: #E2E8F0;
-  --footer-links: var(--primary-blue);
-  --footer-links-hover: var(--success-green);
-  --footer-secondary-text: var(--medium-gray);
+  --footer-bg: ;
+  --footer-text: ;
+  --footer-links: ;
+  --footer-links-hover: ;
+  --footer-secondary-text: ;
 
   /* Buttons */
-  --btn-primary-bg: var(--primary-blue);
-  --btn-primary-text: var(--dark-gray);
-  --btn-primary-hover: #4299E1;
-  --btn-primary-border: var(--primary-blue);
+  --btn-primary-bg: ;
+  --btn-primary-text: ;
+  --btn-primary-hover: ;
+  --btn-primary-border: ;
 
 
   --btn-secondary-bg: transparent;
-  --btn-secondary-text: var(--primary-blue);
-  --btn-secondary-border: var(--primary-blue);
-  --btn-secondary-hover-bg: var(--primary-blue);
-  --btn-secondary-hover-text: var(--dark-gray);
+  --btn-secondary-text: ;
+  --btn-secondary-border: ;
+  --btn-secondary-hover-bg: ;
+  --btn-secondary-hover-text: ;
 
-  --btn-success-bg: var(--success-green);
-  --btn-success-text: var(--dark-gray);
-  --btn-success-hover: #48BB78;
+  --btn-success-bg: ;
+  --btn-success-text: ;
+  --btn-success-hover: ;
 
   /* Background */
   --bg-main: var(--black);
-  --bg-section: var(--pure-white);
-  --bg-alternate: #171923;
+  --bg-section: ;
+  --bg-alternate: ;
 
   /* Page Text */
-  --main-text-color: var(--pure-white);
-  --section-text-color: var(--medium-gray);
-  --alternate-text-color: var(--dark-gray);
+  --main-text-color: ;
+  --section-text-color: ;
+  --alternate-text-color: ;
 
 
   /* Input Forms */
-  --input-bg: var(--pure-white);
-  --input-border: var(--light-gray);
-  --input-text: #E2E8F0;
-  --input-placeholder: var(--medium-gray);
-  --input-focus-border: var(--primary-blue);
-  --input-focus-shadow: rgba(99, 179, 237, 0.1);
+  --input-bg: ;
+  --input-border: ;
+  --input-text: #;
+  --input-placeholder: ;
+  --input-focus-border: ;
+  --input-focus-shadow: ;
 
-  --label-text: #E2E8F0;
-  --label-required: var(--error-red);
+  --label-text: ;
+  --label-required: ;
 
-  --input-error-border: var(--error-red);
-  --input-error-text: var(--error-red);
-  --input-error-bg: var(--light-red);
+  --input-error-border: ;
+  --input-error-text: ;
+  --input-error-bg: ;
 
-  --input-success-border: var(--success-green);
-  --input-success-text: var(--success-green);
+  --input-success-border: ;
+  --input-success-text: ;
 
   /* Hover */
-  --hover-shadow: rgba(var(--pure-red), 1);
+  --hover-shadow: ;
 } 

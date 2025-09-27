@@ -2,6 +2,7 @@ import React from 'react'
 import './Navbar.css'
 import Logo from '../logo/Logo'
 import NavbarButton from './NavbarButton'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     return (
@@ -15,19 +16,19 @@ const Navbar = () => {
                 <div className='navbar-list-container'>
                     <ul className="navbar-list">
                         <li className="navbar-item">
-                            <a href="/">Home</a>
+                            <Link to="/">Home</Link>
                         </li>
                         <li className="navbar-item">
-                            <a href="/">Dashboard</a>
+                            <Link to="/dashboard">Dashboard</Link>
                         </li>
                         <li className="navbar-item">
-                            <a href="/">About</a>
+                            <Link to="/about">About</Link>
                         </li>
                     </ul>
                 </div>
                 {/* Profile Area - right */}
                 <div className="navbar-profile">
-                    <NavbarButton text="Login" />
+                    <Link to='/login'><NavbarButton text="Login"/></Link>
                 </div>
             </div>
         </div>
