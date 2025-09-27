@@ -3,8 +3,10 @@ import './HomePage.css'
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
+    <div className="homepage-container">
+      <div className="homepage-text-container">
+        <h1>Welcome to the Home Page</h1>
+      </div>
     </div>
   )
 }

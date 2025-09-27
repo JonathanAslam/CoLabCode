@@ -1,3 +1,32 @@
+body {
+    margin: 0;
+}
+
 h1 {
     color: var(--white);
+}
+
+.homepage-container {
+    position: relative;
+    left: 2.5vw;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 78vh;
+    width: 95vw;
+    border-radius: 50px;
+    background: var(--white);
+}
+
+
+/* currently just here for the text, delete this if we use a photo or 3js item for the homepage */
+.homepage-text-container {
+    display: flex;
+    width: 99%;
+    height: 99%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    background: var(--light-grey);
 }
