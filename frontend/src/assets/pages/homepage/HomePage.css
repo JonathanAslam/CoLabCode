@@ -10,17 +10,29 @@ h1 {
     position: relative;
     left: 2.5vw;
     top: 0;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     height: 78vh;
     width: 95vw;
     border-radius: 50px;
-    background: var(--white);
+    background: rgb(35, 35, 35);
 }
 
+ .background-effect {
+    position: relative;
+    /* left: 2.5vw; */
+    top: 0;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    height: 78vh;
+    width: 95vw;
+    filter: blur(20px);
+    border-radius: 50px;
+} 
 
-/* currently just here for the text, delete this if we use a photo or 3js item for the homepage */
+/* currently just here for the text, delete this if we use a photo or 3js item for the homepage
 .homepage-text-container {
     display: flex;
     width: 99%;
@@ -29,4 +41,17 @@ h1 {
     justify-content: center;
     border-radius: 50px;
     background: var(--light-grey);
+} */
+
+.homepage-text-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: -55%;
+}
+
+.homepage-text-container h1{
+    position: relative;
+    background: red;
+
 }
