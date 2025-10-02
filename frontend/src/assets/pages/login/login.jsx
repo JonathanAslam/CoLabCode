@@ -5,7 +5,9 @@ import './Login.css'
 const login = () => {
   return (
     <div>
-      <h1>Login Page</h1>
+      <form action="">
+        <h1>Login</h1>
+      </form>
     </div>
   )
 }
