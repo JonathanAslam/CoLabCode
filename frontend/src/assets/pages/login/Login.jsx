@@ -3,16 +3,7 @@ import './Login.css'
 import Button from '../../components/button/Button'
 
 
-const login = () => {
-
-  const [hasAccount, setHasAccount] = useState(false);
-
-  // useEffect(() => {
-
-
-  // }, []);
-
-
+const Login = () => {
   return (
     <div className='login-page'>
       <div className='forms-container'>
@@ -47,4 +38,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
