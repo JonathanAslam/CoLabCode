@@ -8,7 +8,7 @@ import Navbar from './assets/components/navbar/Navbar'
 import Homepage from './assets/pages/homepage/HomePage'
 import Dashboard from './assets/pages/dashboard/Dashboard'
 import About from './assets/pages/about/About'
-import Login from './assets/pages/login/login'
+import Login from './assets/pages/login/Login'
 
 function App() {
   return (
