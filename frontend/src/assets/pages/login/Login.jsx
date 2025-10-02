@@ -2,7 +2,7 @@ import React from 'react'
 import './Login.css'
 
 
-const login = () => {
+const Login = () => {
   return (
     <div>
       <form action="">
@@ -12,4 +12,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
