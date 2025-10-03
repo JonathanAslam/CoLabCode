@@ -4,13 +4,17 @@ h1 {
 
 
 .login-page {
-    background-color: var(--dark-grey);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
 }
 
 .forms-container {
     position: relative;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 5vh;
@@ -21,19 +25,63 @@ h1 {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
     padding: 40px;
     gap: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form h1 {
-    color: var(--black);
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .input-field {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;   
+    padding: 10px;
+    border: 1px solid var(--light-grey);
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+/* if the user types something in the input field, give it a decoration */
+.input-field:active,
+.input-field:focus,
+.input-field:not(:placeholder-shown) {
+    border: 2px solid var(--accent-pink);
+    outline: none;
+}
+
+
+
+.btn {
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    background: linear-gradient(to bottom right, var(--accent-purple), var(--accent-pink));
+    color: var(--white);
+
+}
+
+
+.btn:hover {
+    cursor: pointer;
+    font-weight: bold;
+    /* font-size: 1.12rem; */
+}
+
+/* specifically button for going back a page */
+
+.back-btn {
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+    max-width: fit-content;
+    width: auto;
+    padding: 0.5rem 1rem;
 }

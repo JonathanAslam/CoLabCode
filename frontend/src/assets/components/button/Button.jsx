@@ -1,9 +1,14 @@
 import React from 'react'
 import './Button.css'
 
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, className }) => {
     return (
-        <button className="button" type="button" onClick={onClick}>
+        <button
+        // allows the classname to be overwritten 
+            className={`button${className ? ' ' + className : ''}`}
+            type="button"
+            onClick={onClick}
+        >
             {text}
         </button>
     )
