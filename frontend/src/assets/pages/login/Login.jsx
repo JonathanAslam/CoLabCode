@@ -1,0 +1,85 @@
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './Login.css'
+import Button from '../../components/button/Button'
+
+
+const Login = () => {
+  // page navigation
+  const navigate = useNavigate();
+
+  const [hasAccount, setHasAccount] = useState(false)
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("Logged in:", username, email, password);
+  }
+
+  const handleCreateAccount = (e) => {
+    e.preventDefault();
+    console.log("Created Account:", username, email, password);
+  }
+
+
+  const handleFormToggle = () => {
+    setHasAccount(!hasAccount);
+    // clear input fields
+    setUsername('');
+    setEmail('');
+    setPassword('');
+  }
+
+  return (
+    <div className='login-page'>
+      {/* return back button */}
+      <Button
+        className='back-btn'
+        text="< Back"
+        onClick={() => navigate(-1)} // move back a page with -1
+      />
+
+
+      {/* logo section */}
+      <div className='logo-section'>
+        <h1>ColabCode</h1>
+      </div>
+
+      {/* form section */}
+      <div className='form-section'>
+        <div className='forms-container'>
+          {hasAccount ? (
+            //Login form
+            <div className='form' >
+              <h1>Login</h1>
+              <form action="" className='form-inputs' onSubmit={handleLogin}>
+                <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
+                <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                <button className='btn' type="submit">Login</button>
+              </form>
+            </div>
+          ) : (
+            //Create account form
+            < div className='form' >
+              <h1>Create Account</h1>
+              <form action="" className='form-inputs' onSubmit={handleCreateAccount}>
+                <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
+                <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                <button className='btn' type="submit">Create Account</button>
+              </form>
+            </div >
+          )}
+        </div>
+        <Button
+          text={hasAccount ? "Don't Have An Account? Create One Here!" : "Have An Account? Login Here!"} onClick={handleFormToggle}
+        />
+      </div>
+    </div >
+  )
+}
+
+export default Login
