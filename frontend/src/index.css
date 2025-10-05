@@ -21,11 +21,10 @@ body {
   /* Base Colors */
   --primary-blue: #63B3ED;
   --success-green: #68D391;
-  --medium-gray: #A0AEC0;
   --error-red: #FC8181;
   --pure-red: #FF0000; 
   --dark-red: #742A2A;
-
+  
   /* Greyscale */
   --black: #000000;
   --dark-grey: #333333;

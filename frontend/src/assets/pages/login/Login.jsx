@@ -20,7 +20,16 @@ const Login = () => {
 
   const handleCreateAccount = (e) => {
     e.preventDefault();
-    console.log("Created Account", username, email, password);
+    console.log("Created Account:", username, email, password);
+  }
+
+
+  const handleFormToggle = () => {
+    setHasAccount(!hasAccount);
+    // clear input fields
+    setUsername('');
+    setEmail('');
+    setPassword('');
   }
 
   return (
@@ -32,7 +41,7 @@ const Login = () => {
         onClick={() => navigate(-1)} // move back a page with -1
       />
 
-      
+
       {/* logo section */}
       <div className='logo-section'>
         <h1>ColabCode</h1>
@@ -43,9 +52,9 @@ const Login = () => {
         <div className='forms-container'>
           {hasAccount ? (
             //Login form
-            <div className='form' onSubmit={handleLogin}>
+            <div className='form' >
               <h1>Login</h1>
-              <form action="" className='form-inputs'>
+              <form action="" className='form-inputs' onSubmit={handleLogin}>
                 <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
                 <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
                 <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
@@ -54,9 +63,9 @@ const Login = () => {
             </div>
           ) : (
             //Create account form
-            < div className='form' onSubmit={handleCreateAccount}>
+            < div className='form' >
               <h1>Create Account</h1>
-              <form action="" className='form-inputs'>
+              <form action="" className='form-inputs' onSubmit={handleCreateAccount}>
                 <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
                 <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
                 <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
@@ -66,7 +75,7 @@ const Login = () => {
           )}
         </div>
         <Button
-          text={hasAccount ? "Don't Have An Account? Create One Here!" : "Have An Account? Login Here!"} onClick={() => setHasAccount(!hasAccount)}
+          text={hasAccount ? "Don't Have An Account? Create One Here!" : "Have An Account? Login Here!"} onClick={handleFormToggle}
         />
       </div>
     </div >

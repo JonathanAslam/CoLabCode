@@ -58,8 +58,7 @@ h1 {
     gap: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* temp below this */
-    /* From https://css.glass */
+    /* Below From https://css.glass */
     background: rgba(175, 175, 175, 0.17);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -81,6 +80,14 @@ h1 {
     font-size: 16px;
     /* temp stuff below */
     background-color: transparent;
+}
+
+.input-field::placeholder {
+    color: var(--light-grey);
+}
+
+.input-field:not(:placeholder-shown) {
+    color: var(--white);
 }
 
 /* if the user types something in the input field, give it a decoration */
