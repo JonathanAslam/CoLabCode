@@ -20,6 +20,6 @@
 .button:hover,
 .button a:hover {
     text-decoration: none;
-    background: linear-gradient(to bottom right, var(--accent-purple), var(--accent-pink));
+    background: linear-gradient(to bottom right, var(--accent-two), var(--accent-one));
     color: var(--white);
 }

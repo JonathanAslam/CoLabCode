@@ -36,6 +36,13 @@ body {
   --transparent: transparent;
 
   /* Accent Colors */
+
+  /* change these */
+  --accent-one: var(--accent-pink);
+  --accent-two: var(--accent-purple);
+  --accent-three: var(--accent-dark-pink);
+
+  /* dont change these */
   --accent-pink: #e91e63;
   --accent-dark-pink: #c4185b;
   --accent-purple: #9c27b0;
@@ -54,7 +61,7 @@ body {
   --navbar-bg: var(--black);
   --navbar-text: var(--light-grey);
   --navbar-active: ;
-  --navbar-hover: var(--accent-pink);
+  --navbar-hover: var(--accent-one);
   --navbar-border: ;
 
   /* Footer */
