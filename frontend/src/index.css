@@ -3,6 +3,7 @@ body {
   width: 100%;
   max-width: 100vw;
   height: 100%;
+  font-family: 'Geist', sans-serif;
   /* overflow-x: hidden; Disable horizontal scrolling */
   overflow: hidden;
   /* Disable horizontal and vertical scrolling */
@@ -25,11 +26,10 @@ body {
   /* Base Colors */
   --primary-blue: #63B3ED;
   --success-green: #68D391;
-  --medium-gray: #A0AEC0;
   --error-red: #FC8181;
   --pure-red: #FF0000;
   --dark-red: #742A2A;
-
+  
   /* Greyscale */
   --black: #000000;
   --dark-grey: #333333;
@@ -40,6 +40,13 @@ body {
   --transparent: transparent;
 
   /* Accent Colors */
+
+  /* change these */
+  --accent-one: var(--accent-pink);
+  --accent-two: var(--accent-purple);
+  --accent-three: var(--accent-dark-pink);
+
+  /* dont change these */
   --accent-pink: #e91e63;
   --accent-dark-pink: #c4185b;
   --accent-purple: #9c27b0;
@@ -58,7 +65,7 @@ body {
   --navbar-bg: var(--black);
   --navbar-text: var(--light-grey);
   --navbar-active: ;
-  --navbar-hover: var(--accent-pink);
+  --navbar-hover: var(--accent-one);
   --navbar-border: ;
 
   /* Footer */

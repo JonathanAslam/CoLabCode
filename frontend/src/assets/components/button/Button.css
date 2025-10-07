@@ -1,17 +1,15 @@
-.navbar-button {
-    display: flex;
-    gap:8px;
+.button {
     background: transparent;
-    border: none;
     border-radius: 50px;
+    border: 2px solid var(--white);
     color: var(--navbar-text);
     padding: 0.5rem 1rem;
     font-size: 1rem;
     cursor: pointer;
-    /* display: inline-block; */
+    display: inline-block;
 }
 
-.navbar-button a {
+.button a {
     color: inherit;
     text-decoration: none;
     display: block;
@@ -19,7 +17,8 @@
     height: 100%;
 }
 
-.navbar-button:hover {
+.button:hover,
+.button a:hover {
     text-decoration: none;
     background: linear-gradient(to bottom right, var(--accent-two), var(--accent-one));
     color: var(--white);

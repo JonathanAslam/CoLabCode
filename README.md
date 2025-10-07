@@ -10,3 +10,6 @@
         - if no branch on github with the [name of branch] <-- error will popup, use the given: git push --set-upstream origin [name of branch]
 
 
+- When updating dependencies (after doing an npm install or git pull if main directory has new dependencies), run:
+    - ```docker compose up --build --renew-anon-volumes```
+
