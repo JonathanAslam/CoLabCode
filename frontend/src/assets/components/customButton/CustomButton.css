@@ -1,0 +1,50 @@
+.custom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.6rem 1.1rem;   /* vertical / horizontal padding */
+  font-size: 1rem;         /* 16px by default in most browsers */
+  line-height: 1;
+  min-width: 6.25rem;      /* ~100px minimum width */
+  gap: 0.5rem;             /* space between icon + label if used */
+
+  background: #444444;     /* default color */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease, transform 140ms ease;
+
+  box-sizing: border-box;
+}
+
+/* Disabled state */
+.custom-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hover & focus styles (do not apply when disabled) */
+.custom-button:not(:disabled):hover {
+  background: #ff69b4; /* hotpink */
+  transform: translateY(-1px);
+}
+
+.custom-button:not(:disabled):focus-visible {
+  outline: 3px solid rgba(255,105,180,0.2);
+  outline-offset: 2px;
+}
+
+/* Optional small/large/full variants */
+.custom-button.small { padding: 0.25rem 0.5rem; font-size: 0.875rem; }
+.custom-button.large { padding: 0.9rem 1.6rem; font-size: 1.125rem; }
+.custom-button.full { display: flex; width: 100%; }
+
+.custom-button__label { display: inline-block; }
+.custom-button__icon {
+  width: 1em;
+  height: 1em;
+  margin-left: 0.5rem;
+  display: inline-block;
+}

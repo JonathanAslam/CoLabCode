@@ -9,21 +9,40 @@ function BouncingCube({ position, size, color, speed }) {
     if (!meshRef.current) return;
 
     const { viewport } = state;
-    const rightBoundary = viewport.width / 2 - size[0] / 2;
-    const topBoundary = viewport.height / 2 - size[1] / 2;
+    // viewport gives us the visible area in world units
+    const halfWidth = size[0] / 2;
+    const halfHeight = size[1] / 2;
+    const rightBoundary = viewport.width / 2;
+    const topBoundary = viewport.height / 2;
 
+    // Move the cube
     meshRef.current.position.x += velocity.current.x * delta;
     meshRef.current.position.y += velocity.current.y * delta;
-    
+
     meshRef.current.rotation.x += 0.1 * delta;
     meshRef.current.rotation.y += 0.1 * delta;
 
-    if (meshRef.current.position.x >= rightBoundary || meshRef.current.position.x <= -rightBoundary) {
-      velocity.current.x *= -1;
+    // Compute min/max allowed positions (accounting for cube size)
+    const maxX = rightBoundary - halfWidth;
+    const minX = -rightBoundary + halfWidth;
+    const maxY = topBoundary - halfHeight;
+    const minY = -topBoundary + halfHeight;
+
+    // If cube exceeded boundaries, clamp it and reverse velocity so it stays inside.
+    if (meshRef.current.position.x > maxX) {
+      meshRef.current.position.x = maxX;
+      if (velocity.current.x > 0) velocity.current.x *= -1;
+    } else if (meshRef.current.position.x < minX) {
+      meshRef.current.position.x = minX;
+      if (velocity.current.x < 0) velocity.current.x *= -1;
     }
 
-    if (meshRef.current.position.y >= topBoundary || meshRef.current.position.y <= -topBoundary) {
-      velocity.current.y *= -1;
+    if (meshRef.current.position.y > maxY) {
+      meshRef.current.position.y = maxY;
+      if (velocity.current.y > 0) velocity.current.y *= -1;
+    } else if (meshRef.current.position.y < minY) {
+      meshRef.current.position.y = minY;
+      if (velocity.current.y < 0) velocity.current.y *= -1;
     }
   });
 

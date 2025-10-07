@@ -4,6 +4,7 @@ import Logo from '../logo/Logo'
 import NavbarButton from './NavbarButton'
 import { Link, useNavigate } from 'react-router-dom'
 
+
 const Navbar = () => {
     return (
         <div className="navbar">
@@ -28,7 +29,7 @@ const Navbar = () => {
                 </div>
                 {/* Profile Area - right */}
                 <div className="navbar-profile">
-                    <Link to='/login'><NavbarButton text="Login"/></Link>
+                    <Link to='/login'><NavbarButton text="Login" /></Link>
                 </div>
             </div>
         </div>

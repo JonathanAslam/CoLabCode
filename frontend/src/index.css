@@ -1,28 +1,33 @@
-html, body {
+html,
+body {
   width: 100%;
   max-width: 100vw;
   height: 100%;
   /* overflow-x: hidden; Disable horizontal scrolling */
-  overflow: hidden; /* Disable horizontal and vertical scrolling */
+  overflow: hidden;
+  /* Disable horizontal and vertical scrolling */
 }
+
 body {
   margin: 0;
-  padding: 0; 
-  font-family: 'Oswald', sans-serif;
+  padding: 0;
+  font-family: 'Geist', sans-serif;
   background-color: var(--bg-main);
   color: var(--main-text-color);
 }
 
+
 /* Dark Theme for easy color modification*/
-/* [data-theme="dark"] */ /* uncomment this code and replace the :root if needed later*/
- 
+/* [data-theme="dark"] */
+/* uncomment this code and replace the :root if needed later*/
+
 :root {
   /* Base Colors */
   --primary-blue: #63B3ED;
   --success-green: #68D391;
   --medium-gray: #A0AEC0;
   --error-red: #FC8181;
-  --pure-red: #FF0000; 
+  --pure-red: #FF0000;
   --dark-red: #742A2A;
 
   /* Greyscale */
@@ -111,4 +116,4 @@ body {
 
   /* Hover */
   --hover-shadow: ;
-} 
+}
