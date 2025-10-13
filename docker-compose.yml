@@ -20,5 +20,22 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
+    environment:
+      - ETHERPAD_API_KEY=${ETHERPAD_API_KEY} 
     ports:
       - "5001:5000"
+
+  etherpad:
+    image: etherpad/etherpad
+    restart: unless-stopped
+    ports:
+      - "9001:9001"
+    volumes:
+      - etherpad-data:/opt/etherpad-lite/var
+    environment:
+      - ETHERPAD_API_KEY=${ETHERPAD_API_KEY}
+      - ETHERPAD_ADMIN_PASSWORD=${ETHERPAD_ADMIN_PASSWORD}
+      - ETHERPAD_TITLE=CoLab Code Etherpad
+
+volumes:
+  etherpad-data:
