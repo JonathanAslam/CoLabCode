@@ -6,6 +6,7 @@ import Homepage from './assets/pages/homepage/HomePage'
 import Dashboard from './assets/pages/dashboard/Dashboard'
 import About from './assets/pages/about/About'
 import Login from './assets/pages/login/Login'
+import Document from './assets/pages/document/Document'
 
 
 function AppContent() {
@@ -20,6 +21,7 @@ function AppContent() {
         <Route path='/dashboard' element={<Dashboard />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/document' element={<Document />}></Route>
       </Routes>
     </>
   );
