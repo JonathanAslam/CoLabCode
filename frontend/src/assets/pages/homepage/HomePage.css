@@ -4,6 +4,13 @@ body {
 
 h1 {
     color: var(--white);
+    font-size: 8rem;
+    margin-bottom: 0px;
+}
+
+h3 {
+    color: var(--white);
+    margin-top: 0px;
 }
 
 .homepage-container {
@@ -16,21 +23,20 @@ h1 {
     height: 78vh;
     width: 95vw;
     border-radius: 50px;
-    background: rgb(35, 35, 35);
+    background: rgb(7, 7, 7);
+    overflow: hidden; /* ensure children (blur) are clipped to rounded corners */
 }
 
  .background-effect {
-    position: relative;
-    /* left: 2.5vw; */
-    top: 0;
-    /* display: flex; */
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 78vh;
-    width: 95vw;
+    /* fill the parent so blur is confined by parent's overflow:hidden */
     filter: blur(20px);
-    border-radius: 50px;
-} 
+    /* no border-radius here — parent clips it */
+}
 
 /* currently just here for the text, delete this if we use a photo or 3js item for the homepage
 .homepage-text-container {
@@ -44,14 +50,15 @@ h1 {
 } */
 
 .homepage-text-container {
-    position: relative;
+    position: absolute; /* place over the background */
+    inset: 0; 
     display: flex;
+    align-items: center;
     justify-content: center;
-    top: -55%;
+    flex-direction: column;
+    z-index: 2; 
+    pointer-events: none; 
 }
 
-.homepage-text-container h1{
-    position: relative;
-    background: red;
-
-}
+/* make interactive children (buttons/links) receive pointer events */
+.homepage-text-container * { pointer-events: auto; }

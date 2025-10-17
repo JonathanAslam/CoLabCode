@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './NavbarButton.css'
+import { FaUserLarge } from "react-icons/fa6";
+
 
 const NavbarButton = ({ text, asLink = false }) => {
   return (

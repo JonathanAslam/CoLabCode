@@ -4,6 +4,7 @@ import Logo from '../logo/Logo'
 import NavbarButton from './NavbarButton'
 import { Link, useNavigate } from 'react-router-dom'
 
+
 const Navbar = () => {
     return (
         <div className="navbar">
