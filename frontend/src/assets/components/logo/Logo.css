@@ -3,5 +3,5 @@
 .logo span {
     font-weight: bold;
     color: var(--logo-color);
-    font-family: 'Courier New', Courier, monospace; /* typewriter style font */
+    /* font-family: 'Courier New', Courier, monospace; typewriter style font */
 }

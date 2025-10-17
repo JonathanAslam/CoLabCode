@@ -1,3 +1,133 @@
 h1 {
     color: var(--white)
 }
+
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* logo section css */
+
+.logo-section {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, var(--accent-two), var(--accent-one));
+}
+
+
+/* form section css*/
+
+.form-section {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(to bottom right, var(--accent-two), var(--accent-one)); */
+}
+
+
+.forms-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5vh;
+    width: 100%;
+    height: 60%;
+    margin: 0;
+}
+
+.form {
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Below From https://css.glass */
+    background: rgba(175, 175, 175, 0.17);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);    ;
+}
+
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-field {
+    padding: 10px;
+    border: 1px solid var(--light-grey);
+    border-radius: 50px;
+    font-size: 16px;
+    /* temp stuff below */
+    background-color: transparent;
+}
+
+.input-field::placeholder {
+    color: var(--light-grey);
+}
+
+.input-field:not(:placeholder-shown) {
+    color: var(--white);
+}
+
+/* if the user types something in the input field, give it a decoration */
+.input-field:active,
+.input-field:focus,
+.input-field:not(:placeholder-shown) {
+    border: 2px solid var(--accent-one);
+    outline: none;
+}
+
+
+
+/* button css */
+
+.btn {
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    background: linear-gradient(to bottom right, var(--accent-two), var(--accent-one));
+    color: var(--white);
+
+}
+
+.btn:hover {
+    cursor: pointer;
+    font-weight: bold;
+    /* font-size: 1.12rem; */
+}
+
+/* specifically button for going back a page */
+
+.back-btn {
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+    max-width: fit-content;
+    width: auto;
+    padding: 0.5rem 1rem;
+}
