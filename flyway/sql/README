@@ -1,0 +1,3 @@
+Flyway migration is used to automate database schema migrations.
+This is essentially a version control for databases and makes sure that things are set up the same.
+Flyway uses a specific naming convention (V<VERSION>__<DESCRIPTION>.sql).
