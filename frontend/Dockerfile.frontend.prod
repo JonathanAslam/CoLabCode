@@ -7,6 +7,8 @@ COPY package*.json ./
 RUN npm install --frozen-lockfile
 
 COPY . .
+# Copy production environment file
+COPY .env.production .env.production
 RUN npm run build
 
 # Stage 2: Serve with a lightweight web server

@@ -2,29 +2,23 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.frontend.dev
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      dockerfile: Dockerfile.frontend.prod
     ports:
-      - "5173:5173"
+      - "80:80"
     environment:
-      - CHOKIDAR_USEPOLLING=true  # helps hot reload inside Docker
+      - NODE_ENV=production
     depends_on:
       - backend
+      - etherpad
 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile.backend.dev
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
+      dockerfile: Dockerfile.backend.prod
     environment:
+      - NODE_ENV=production
       - ETHERPAD_API_KEY=${ETHERPAD_API_KEY}
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-    ports:
-      - "5001:5000"
     depends_on:
       - flyway
 
@@ -45,25 +39,22 @@ services:
   etherpad:
     image: etherpad/etherpad
     restart: unless-stopped
-    ports:
-      - "9001:9001"
     volumes:
       - etherpad-data:/opt/etherpad-lite/var
       - ./etherpad/settings.json:/opt/etherpad-lite/settings.json
     environment:
+      - NODE_ENV=production
       - ETHERPAD_API_KEY=${ETHERPAD_API_KEY}
       - ETHERPAD_ADMIN_PASSWORD=${ETHERPAD_ADMIN_PASSWORD}
       - ETHERPAD_TITLE=CoLab Code Etherpad
+
   db:
     image: postgres:latest
     restart: always
     environment:
-      # Reference the variables from the .env file
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

@@ -33,6 +33,7 @@ const Etherpad = ({ padName }) => {
         title={`Etherpad: ${padName}`}
         className="etherpad-iframe"
         frameBorder="0"
+        allow="storage-access *"
       />
     </div>
   );
