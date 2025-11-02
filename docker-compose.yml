@@ -49,6 +49,7 @@ services:
       - "9001:9001"
     volumes:
       - etherpad-data:/opt/etherpad-lite/var
+      - ./etherpad/settings.json:/opt/etherpad-lite/settings.json
     environment:
       - ETHERPAD_API_KEY=${ETHERPAD_API_KEY}
       - ETHERPAD_ADMIN_PASSWORD=${ETHERPAD_ADMIN_PASSWORD}

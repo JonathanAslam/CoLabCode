@@ -1,45 +1,35 @@
-// controllers/user.controller.js
-import { z } from "zod";
+// controllers/User.controller.js
+class UserController {
+  constructor(userService) {
+    this.userService = userService;
+  }
 
-const createUserInput = z.object({
-    username: z.string().min(5),
-    email: z.string().email(),
-    password: z.string().min(8),
-});
+  // Create a new user
+  async create(req, res) {
+    try {
+      const { username, email, password } = req.body;
 
-const userIdParam = z.object({
-    id: z.string().uuid(),
-});
+      // Validate required fields
+      if (!username || !email || !password) {
+        return res.status(400).json({ 
+          error: 'Missing required fields: username, email, password' 
+        });
+      }
 
-
-/** @param {{ create(input: any): Promise<any>, getById(id: string): Promise<any> }} userService */
-export function makeUserController(userService) {
-    return {
-        create: async (req, res, next) => {
-            try {
-                // 1) Validate HTTP body at the edge
-                const input = createUserInput.parse(req.body);
-
-                // 2) Call service with plain data
-                const user = await userService.create(input);
-
-                // 3) Map domain result -> HTTP response
-                res.status(201).json(user);
-            } catch (err) { next(err); }
-        },
-
-        get: async (req, res, next) => {
-            try {
-                // 1) Validate route param
-                const { id } = userIdParam.parse(req.params);
-
-                // 2) Call service
-                const user = await userService.getById(id);
-
-                // 3) Shape HTTP response
-                if (!user) return res.status(404).json({ message: "Not found" });
-                res.json(user);
-            } catch (err) { next(err); }
-        },
-    };
+      const user = await this.userService.create({ username, email, password });
+      
+      res.status(201).json(user);
+    } catch (error) {
+      console.error('Error creating user:', error);
+      
+      if (error.message.includes('already exists') || 
+          error.message.includes('must be at least')) {
+        return res.status(400).json({ error: error.message });
+      }
+      
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
 }
+
+module.exports = UserController;

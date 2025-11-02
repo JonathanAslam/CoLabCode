@@ -1,40 +1,59 @@
-// services/user.service.js
-import bcrypt from "bcryptjs";
-import { User } from "../models/user.entity.js";
+// services/User.service.js
+const bcrypt = require('bcryptjs');
+const User = require('../models/User.entity');
 
-/** Fake repo as placeholder. Replace with real implementation when DB is chosen
- * @param {Object} deps
- * @param {UserRepository} deps.repo
- * @param {{ newId(): string } | null} deps.idGen
- */
-export function makeUserService({ repo, idGen }) {
-  return {
-    /** @param {{username: string; email: string; password: string}} input */
-    async create(input) {
-      const passwordHash = await bcrypt.hash(input.password, 12);
+class UserService {
+  constructor(userRepository) {
+    this.userRepository = userRepository;
+  }
 
-      // Decide who sets the ID:
-      const id = idGen ? idGen.newId() : undefined;
+  async create(input) {
+    // Validate input
+    if (!input.username || input.username.length < 5) {
+      throw new Error('Username must be at least 5 characters long');
+    }
+    
+    if (!input.email || !this.isValidEmail(input.email)) {
+      throw new Error('Valid email is required');
+    }
+    
+    if (!input.password || input.password.length < 8) {
+      throw new Error('Password must be at least 8 characters long');
+    }
 
-      const entity = new User({
-        id, // undefined means "repo/DB will assign the id"
-        username: input.username,
-        email: input.email,
-        passwordHash,
-      });
+    // Check if username or email already exists
+    const existingUsername = await this.userRepository.findByUsername(input.username);
+    if (existingUsername) {
+      throw new Error('Username already exists');
+    }
 
-      const saved = await repo.create(entity);
+    const existingEmail = await this.userRepository.findByEmail(input.email);
+    if (existingEmail) {
+      throw new Error('Email already exists');
+    }
 
-      // Don’t leak secrets
-      const { passwordHash: _, ...safe } = saved;
-      return safe;
-    },
+    // Hash password
+    const passwordHash = await bcrypt.hash(input.password, 12);
 
-    async getById(id) {
-      const user = await repo.findById(id);
-      if (!user) return null;
-      const { passwordHash: _, ...safe } = user;
-      return safe;
-    },
-  };
+    // Create user entity
+    const user = new User({
+      username: input.username,
+      email: input.email,
+      passwordHash: passwordHash
+    });
+
+    // Save to database
+    const savedUser = await this.userRepository.create(user);
+
+    // Return user without password
+    return savedUser.toJSON();
+  }
+
+  // Helper method to validate email
+  isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 }
+
+module.exports = UserService;
