@@ -29,7 +29,7 @@ const Navbar = () => {
                 </div>
                 {/* Profile Area - right */}
                 <div className="navbar-profile">
-                    <Link to='/login'><NavbarButton text="Login" asLink={true}/></Link>
+                    <Link className='navbar-login-link' to='/login'><NavbarButton text="Login" asLink={true}/></Link>
                 </div>
             </div>
         </div>

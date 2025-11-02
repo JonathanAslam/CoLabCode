@@ -16,9 +16,9 @@ const NavbarButton = ({ text, asLink = false }) => {
   )
 }
 
-NavbarButton.propTypes = {
-  text: PropTypes.string.isRequired,
-  asLink: PropTypes.bool,
-}
+// NavbarButton.propTypes = {
+//   text: PropTypes.string.isRequired,
+//   asLink: PropTypes.bool,
+// }
 
 export default NavbarButton

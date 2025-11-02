@@ -67,5 +67,9 @@
     padding-right: 1vw;
 }
 
+.navbar-login-link {
+    text-decoration: none;
+}
+
 
 /* media queries */

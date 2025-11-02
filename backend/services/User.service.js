@@ -7,6 +7,7 @@ import { User } from "../models/user.entity.js";
  * @param {UserRepository} deps.repo
  * @param {{ newId(): string } | null} deps.idGen
  */
+
 export function makeUserService({ repo, idGen }) {
   return {
     /** @param {{username: string; email: string; password: string}} input */

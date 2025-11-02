@@ -4,7 +4,6 @@ body {
 
 h1 {
     color: var(--white);
-    font-size: 8rem;
     margin-bottom: 0px;
 }
 
@@ -62,3 +61,8 @@ h3 {
 
 /* make interactive children (buttons/links) receive pointer events */
 .homepage-text-container * { pointer-events: auto; }
+
+
+#Title {
+    font-size: 6rem;
+}
