@@ -13,3 +13,15 @@
 - When updating dependencies (after doing an npm install or git pull if main directory has new dependencies), run:
     - ```docker compose up --build --renew-anon-volumes```
 
+
+<hr>
+
+## Tech Stack
+- ReactJS
+- NodeJS
+- PostgreSQL
+- Docker
+- Flyway
+
+
+<hr>

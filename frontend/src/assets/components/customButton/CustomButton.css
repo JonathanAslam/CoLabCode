@@ -9,7 +9,8 @@
   min-width: 6.25rem;      /* ~100px minimum width */
   gap: 0.5rem;             /* space between icon + label if used */
 
-  background: #444444;     /* default color */
+  /* background: #444444;      */
+  background: var(--dark-grey);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -27,7 +28,8 @@
 
 /* Hover & focus styles (do not apply when disabled) */
 .custom-button:not(:disabled):hover {
-  background: #ff69b4; /* hotpink */
+  /* background: #ff69b4; */
+  background: var(--accent-pink);
   transform: translateY(-1px);
 }
 
