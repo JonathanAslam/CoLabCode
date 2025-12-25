@@ -21,7 +21,7 @@ function AppContent() {
         <Route path='/dashboard' element={<Dashboard />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
-        <Route path='/document' element={<Document />}></Route>
+        <Route path='/document/:documentId' element={<Document />}></Route>
       </Routes>
     </>
   );
@@ -33,7 +33,6 @@ function App() {
     <Router>
       <AppContent />
     </Router>
-
   );
 }
 

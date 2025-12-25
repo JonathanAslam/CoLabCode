@@ -1,0 +1,63 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend.prod
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+      - etherpad
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend.prod
+    environment:
+      - NODE_ENV=production
+      - ETHERPAD_API_KEY=${ETHERPAD_API_KEY}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    depends_on:
+      - flyway
+
+  flyway:
+    image: flyway/flyway
+    command: migrate 
+    volumes:
+      - ./flyway/sql:/flyway/sql
+    environment:
+      - FLYWAY_URL=jdbc:postgresql://db:5432/${POSTGRES_DB}
+      - FLYWAY_USER=${POSTGRES_USER}
+      - FLYWAY_PASSWORD=${POSTGRES_PASSWORD}
+      - FLYWAY_LOCATIONS=filesystem:/flyway/sql
+      - FLYWAY_CONNECT_RETRIES=60
+    depends_on:
+      - db
+
+  etherpad:
+    image: etherpad/etherpad
+    restart: unless-stopped
+    volumes:
+      - etherpad-data:/opt/etherpad-lite/var
+      - ./etherpad/settings.json:/opt/etherpad-lite/settings.json
+    environment:
+      - NODE_ENV=production
+      - ETHERPAD_API_KEY=${ETHERPAD_API_KEY}
+      - ETHERPAD_ADMIN_PASSWORD=${ETHERPAD_ADMIN_PASSWORD}
+      - ETHERPAD_TITLE=CoLab Code Etherpad
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  etherpad-data:
+  postgres_data:

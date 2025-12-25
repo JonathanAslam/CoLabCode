@@ -1,0 +1,71 @@
+{
+  "title": "CoLab Code Etherpad",
+  "favicon": "favicon.ico",
+  "skinName": "colibris",
+  "skinVariants": "super-light-toolbar super-light-editor light-background",
+  
+  "ip": "0.0.0.0",
+  "port": 9001,
+  
+  "showSettingsInAdminPage": true,
+  
+  "dbType": "dirty",
+  "dbSettings": {
+    "filename": "var/dirty.db"
+  },
+  
+  "defaultPadText": "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nGet involved with Etherpad at https://etherpad.org\n",
+  
+  "suppressErrorsInPadText": false,
+  "requireSession": false,
+  "editOnly": false,
+  "minify": true,
+  "maxAge": 21600,
+  "abiword": null,
+  "soffice": null,
+  "tidyHtml": null,
+  "allowUnknownFileEnds": true,
+  "requireAuthentication": false,
+  "requireAuthorization": false,
+  "trustProxy": true,
+  "cookie": {
+    "sameSite": "Lax",
+    "secure": false
+  },
+  "disableIPlogging": false,
+  "automaticReconnectionTimeout": 0,
+  "scrollWhenFocusLineIsOutOfViewport": {
+    "percentage": {
+      "editionAboveViewport": 0,
+      "editionBelowViewport": 0
+    },
+    "duration": 0,
+    "scrollWhenCaretIsInTheLastLineOfViewport": false,
+    "percentageToScrollWhenUserPressesArrowUp": 0
+  },
+  "socketTransportProtocols": ["xhr-polling", "jsonp-polling", "htmlfile"],
+  "socketIo": {
+    "maxHttpBufferSize": 10000
+  },
+  "loadTest": false,
+  "dumpOnUncleanExit": false,
+  "indentationOnNewLine": false,
+  "importExportRateLimiting": {
+    "windowMs": 90000,
+    "max": 10
+  },
+  "importMaxFileSize": 52428800,
+  "commitRateLimiting": {
+    "duration": 1,
+    "points": 10
+  },
+  "exposeVersion": false,
+  "loglevel": "INFO",
+  "logconfig": {
+    "appenders": [
+      {
+        "type": "console"
+      }
+    ]
+  }
+}
