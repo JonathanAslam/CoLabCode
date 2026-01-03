@@ -49,6 +49,43 @@ class UserService {
     return savedUser.toJSON();
   }
 
+  // Get user by ID - completed (double check if correctly implemented)
+  async getById(id) {
+    // Validate input
+    if (!id) {
+      throw new Error('User ID is required');
+    }
+
+    const user = await this.userRepository.findById(id);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    return user.toJSON();
+  }
+
+  // Login user - completed (double check if correctly implemented)
+  async login(username, password) {
+    // Validate input - we dont want to reveal wether username or password is incorrect so we use a generic message.
+    //                - we also dont want to reveal how the least length a username and password must be, so just check if they are provided or not.
+    if (!username || !password) {
+      throw new Error('Username and password are required');
+    }
+
+    // return a user from userRepository, we will compare the password hash associated with the user to the provided password.
+    const user = await this.userRepository.findByUsername(username);
+    if (!user) {
+      throw new Error('Invalid username or password');
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+    if (!isPasswordValid) {
+      throw new Error('Invalid username or password');
+    }
+
+    return user.toJSON();
+  }
+
   // Helper method to validate email
   isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

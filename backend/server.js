@@ -75,8 +75,8 @@ app.get("/health", async (req, res) => {
 
 // ===== USER ROUTES =====
 app.post("/api/users", (req, res) => userController.create(req, res));
-app.get("/api/users/:id", (req, res) => userController.getById(req, res));
-app.post("/api/users/login", (req, res) => userController.login(req, res));
+app.get("/api/users/:id", (req, res) => userController.getById(req, res)); // implemented - 01/01/2026
+app.post("/api/users/login", (req, res) => userController.login(req, res)); // need to implement
 
 // // ===== DOCUMENT ROUTES =====
 // app.post("/api/documents", (req, res) => documentController.create(req, res));
