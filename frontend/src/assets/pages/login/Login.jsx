@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Login.css'
 import Button from '../../components/button/Button'
+import axios from 'axios';
 
 import Image1 from '../../images/LoginImage1.jpeg'
 import Image2 from '../../images/LoginImage2.jpeg'
@@ -24,54 +25,59 @@ const Login = () => {
   const images = [Image1, Image2, Image3]
 
 
-  // image carousel effect for logo section background
-  const imageCarousel = () => {
-    let index = 0;
-    const logoSection = document.getElementsByClassName('.image-display');
-    setInterval(() => {
-      logoSection.style.backgroundImage = `url(${images[index]})`;
-      index = (index + 1) % images.length;
-    }, 5000);
-  }
+  // // image carousel effect for logo section background
+  // const imageCarousel = () => {
+  //   let index = 0;
+  //   const logoSection = document.getElementsByClassName('.image-display');
+  //   setInterval(() => {
+  //     logoSection.style.backgroundImage = `url(${images[index]})`;
+  //     index = (index + 1) % images.length;
+  //   }, 5000);
+  // }
 
-  useEffect(() => {
-    imageCarousel();
-  }, []);
+  // useEffect(() => {
+  //   imageCarousel();
+  // }, []);
 
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Logged in:", username, email, password);
     setLoading(true);
     setError(null);
+
     try {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/login`, {
+        username,
+        password,
+      });
 
-
-      // Placeholder for actual login logic
-      // On successful login, navigate to dashboard
-      
+      console.log('Login successful:', response.data);
       navigate('/dashboard');
     } catch (error) {
-      console.error("Login failed:", error);
-      setError(error.message || "Login failed");
+      console.error('Login failed:', error);
+      setError(error.response?.data?.error || 'Login failed');
     } finally {
       setLoading(false);
     }
   }
 
-  const handleCreateAccount = (e) => {
+  const handleCreateAccount = async (e) => {
     e.preventDefault();
-    console.log("Created Account:", username, email, password);
     setLoading(true);
     setError(null);
-    try {
 
-      // Placeholder for actual account creation logic
-      // On successful account creation, navigate to dashboard
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users`, {
+        username,
+        email,
+        password,
+      });
+
+      console.log('Account created successfully:', response.data);
       navigate('/dashboard');
     } catch (error) {
-      console.error("Account creation failed:", error);
-      setError(error.message || "Account creation failed");
+      console.error('Account creation failed:', error);
+      setError(error.response?.data?.error || 'Account creation failed');
     } finally {
       setLoading(false);
     }

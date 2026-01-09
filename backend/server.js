@@ -1,5 +1,9 @@
+// load environment variables from .env file
+require('dotenv').config();
+
 // backend/server.js
 const express = require("express");
+// const cors = require("cors"); 
 const pool = require("./config/database");
 
 // Import repositories
@@ -14,14 +18,17 @@ const UserService = require("./services/User.service");
 const UserController = require("./controllers/User.controller");
 // const DocumentController = require("./controllers/Document.controller");
 
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+// app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS middleware (for development)
+// CORS middleware (for development) -- commented out by johnny after using cors package
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -76,7 +83,7 @@ app.get("/health", async (req, res) => {
 // ===== USER ROUTES =====
 app.post("/api/users", (req, res) => userController.create(req, res));
 app.get("/api/users/:id", (req, res) => userController.getById(req, res)); // implemented - 01/01/2026
-app.post("/api/users/login", (req, res) => userController.login(req, res)); // need to implement
+app.post("/api/users/login", (req, res) => userController.login(req, res)); // implemented - 01/06/2026
 
 // // ===== DOCUMENT ROUTES =====
 // app.post("/api/documents", (req, res) => documentController.create(req, res));

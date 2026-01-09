@@ -7,6 +7,8 @@ class UserController {
   // Create a new user
   async create(req, res) {
     try {
+      console
+
       const { username, email, password } = req.body;
 
       // Validate required fields
@@ -81,10 +83,14 @@ class UserController {
     } catch (error) {
       console.error('Error logging in user:', error);
 
-      // if (error.message.includes('not found')) {
-      // }
+      if (error.message.includes('Invalid')) {
+        return res.status(401).json({ error: "Invalid username or password" });
+      }
 
+      res.status(500).json({ error: 'Internal server error' });
+    }
   }
-}
+
+
 }
 module.exports = UserController;
