@@ -16,6 +16,7 @@ const authMiddleware = (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         // UPDATED: Add user from payload (req.user.id)
         req.user = {id: decoded.userId} ; // wrap in an object instead of how it was before
+        req.params.id = decoded.userId; // set the req.params.id to the userId from the token for easy access in protected routes
         next(); // proceed to next middleware or route handler
 
     } catch (error) {

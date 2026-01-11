@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 // backend/server.js
+const cookieParser = require('cookie-parser');
 const express = require("express");
 const authMiddleware = require("./middleware/authMiddleware");
 // const cors = require("cors"); 
@@ -26,6 +27,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 // app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -84,8 +86,11 @@ app.get("/health", async (req, res) => {
 
 // ===== USER ROUTES =====
 app.post("/api/users", (req, res) => userController.create(req, res));
-app.get("/api/users/:id", (req, res) => userController.getById(req, res)); // implemented - 01/01/2026
 app.post("/api/users/login", (req, res) => userController.login(req, res)); // implemented - 01/06/2026
+app.post("/api/users/logout", (req, res) => userController.logout(req, res)); // implemented - 01/06/2026
+// profile route to get current user based on JWT token as long as cookie is present from login
+app.get("/api/users/profile", authMiddleware, (req, res) => userController.getProfile(req, res)); // implemented - 01/10/2026, needs to come before the :id route
+app.get("/api/users/:id", (req, res) => userController.getById(req, res)); // implemented - 01/01/2026
 
 // // ===== DOCUMENT ROUTES =====
 // app.post("/api/documents", (req, res) => documentController.create(req, res));

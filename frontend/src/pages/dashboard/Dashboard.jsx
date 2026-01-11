@@ -5,6 +5,9 @@ import './Dashboard.css'
 import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
+  // TODO: ADD USER AUTHMIDDLEWARE SO ONLY AUTHENTICATED USERS CAN INTERACT W CREATE DOCUMENT BUTTON
+
+
   const navigate = useNavigate()
   const [documents, setDocuments] = useState([])
   const [documentTitle, setDocumentTitle] = useState('')

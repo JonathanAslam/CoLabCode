@@ -4,9 +4,9 @@ import './NavbarButton.css'
 import { FaUserLarge } from "react-icons/fa6";
 
 
-const NavbarButton = ({ text, asLink = false }) => {
+const NavbarButton = ({ text, asLink = false, onClick}) => {
   return (
-    <div className="navbar-button">
+    <div className="navbar-button" onClick={onClick}>
       {asLink ? (
         <span>{text}</span>
       ) : (

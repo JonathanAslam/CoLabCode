@@ -67,9 +67,22 @@
     padding-right: 1vw;
 }
 
-.navbar-login-link {
+#profile-welcome {
+    color: var(--light-grey);
+    margin-right: 10rem;
+    /* font-size: 0.9rem; */
+    font-weight: 500;
+    text-wrap: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar-login-link, 
+.navbar-logout-link {
     text-decoration: none;
 }
+
 
 
 /* media queries */
