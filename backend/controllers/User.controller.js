@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 // controllers/User.controller.js
 class UserController {
   constructor(userService) {
@@ -20,8 +22,25 @@ class UserController {
 
       // calls the userService 'create' function
       const user = await this.userService.create({ username, email, password });
+
+      // create and sign JWT token here
+      const id = user._id;
+      const token = jwt.sign({ userId: id}, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+      // create cookie with the token to use for authentication
+      // Set HTTP-only cookie
+      res.cookie('token', token, {
+        httpOnly: true,                                                   // dont allow js to access, only http
+        secure: process.env.NODE_ENV === "production",                    // only http in production
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // use none for production and lax (between strict and none) for dev
+        maxAge: 24 * 60 * 60 * 1000                                       // 1 day cookie lifetime, change if needed
+      });
+
       
-      res.status(201).json(user);
+      res.status(201).json({
+        message: 'User created successfully',
+        user: user
+      });
     } catch (error) {
       console.error('Error creating user:', error);
       
@@ -38,7 +57,7 @@ class UserController {
   // Get user by ID - completed (double check if correctly implemented)
   async getById(req, res) {
     try {
-      const { id } = req.body;
+      const { id } = req.params.id;
 
       // validate the id 
       if (!id) {
@@ -78,6 +97,19 @@ class UserController {
       
       // calls the userService 'login' function
       const user = await this.userService.login(username, password);
+
+      // create and sign JWT token here - same process as in 'create' method
+      const id = user._id;
+      const token = jwt.sign({ userId: id}, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+      // create cookie with the token to use for authentication
+      // Set HTTP-only cookie
+      res.cookie('token', token, {
+        httpOnly: true,                                                   // dont allow js to access, only http
+        secure: process.env.NODE_ENV === "production",                    // only http in production
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // use none for production and lax (between strict and none) for dev
+        maxAge: 24 * 60 * 60 * 1000                                       // 1 day cookie lifetime, change if needed
+      });
       
       res.status(200).json(user);
     } catch (error) {
@@ -91,6 +123,13 @@ class UserController {
     }
   }
 
+
+  // Additional methods (e.g., update, delete) can be added here
+
+  // Logout user - to be implemented
+  async logout(req, res) {
+    return;
+  };
 
 }
 module.exports = UserController;

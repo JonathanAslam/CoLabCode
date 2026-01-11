@@ -3,10 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import './Login.css'
 import Button from '../../components/button/Button'
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 import Image1 from '../../images/LoginImage1.jpeg'
 import Image2 from '../../images/LoginImage2.jpeg'
 import Image3 from '../../images/LoginImage3.jpeg'
+
+// 3JS cube component background (optional)
+import Cube from '../../components/Cube'
+
 
 const Login = () => {
   // page navigation
@@ -74,7 +79,7 @@ const Login = () => {
       });
 
       console.log('Account created successfully:', response.data);
-      navigate('/dashboard');
+      navigate('/dashboard'); // 
     } catch (error) {
       console.error('Account creation failed:', error);
       setError(error.response?.data?.error || 'Account creation failed');
@@ -94,55 +99,61 @@ const Login = () => {
 
   return (
     <div className='login-page'>
-      {/* return back button */}
-      <Button
-        className='back-btn'
-        text="< Back"
-        onClick={() => navigate(-1)} // move back a page with -1
-      />
-
-
-      {/* logo section */}
-      <div className='logo-section'>
-        <div className='image-display'>
-          <h1>CoLab Code</h1>
-        </div>
+      <div className='login-page-background-cube'>
+        <Cube />
       </div>
 
-      {/* form section */}
-      <div className='form-section'>
-        <div className='forms-container'>
-          {hasAccount ? (
-            //Login form
-            <div className='form' >
-              <h1>Login</h1>
-              <form action="" className='form-inputs' onSubmit={handleLogin}>
-                <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
-                <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
-                <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
-                <button className='btn' type="submit" disabled={loading}>
-                  {loading ? 'Logging in...' : 'Login'}
-                </button>
-              </form>
-            </div>
-          ) : (
-            //Create account form
-            < div className='form' >
-              <h1>Create Account</h1>
-              <form action="" className='form-inputs' onSubmit={handleCreateAccount}>
-                <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
-                <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
-                <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
-                <button className='btn' type="submit" disabled={loading}>
-                  {loading ? 'Creating Account...' : 'Create Account'}
-                </button>        
-              </form>
-            </div >
-          )}
-        </div>
+      <div className='login-page-top-layer'>
+        {/* return back button */}
         <Button
-          text={hasAccount ? "Don't Have An Account? Create One Here!" : "Have An Account? Login Here!"} onClick={handleFormToggle}
+          className='back-btn'
+          text="< Back"
+          onClick={() => navigate(-1)} // move back a page with -1
         />
+
+        {/* removed logo seciton and added the cube background effect. un-comment if we want to use it again */}
+        {/* logo section
+        <div className='logo-section'>
+          <div className='image-display'>
+            <h1>CoLab Code</h1>
+          </div>
+        </div> */}
+
+        {/* form section */}
+        <div className='form-section'>
+          <div className='forms-container'>
+            {hasAccount ? (
+              //Login form
+              <div className='form' >
+                <h1>Login</h1>
+                <form action="" className='form-inputs' onSubmit={handleLogin}>
+                  <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                  {/* <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} /> */}
+                  <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                  <button className='btn' type="submit" disabled={loading}>
+                    {loading ? 'Logging in...' : 'Login'}
+                  </button>
+                </form>
+              </div>
+            ) : (
+              //Create account form
+              < div className='form' >
+                <h1>Create Account</h1>
+                <form action="" className='form-inputs' onSubmit={handleCreateAccount}>
+                  <input className='input-field' type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                  <input className='input-field' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
+                  <input className='input-field' type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                  <button className='btn' type="submit" disabled={loading}>
+                    {loading ? 'Creating Account...' : 'Create Account'}
+                  </button>
+                </form>
+              </div >
+            )}
+          </div>
+          <Button
+            text={hasAccount ? "Don't Have An Account? Create One Here!" : "Have An Account? Login Here!"} onClick={handleFormToggle}
+          />
+        </div>
       </div>
     </div >
   )

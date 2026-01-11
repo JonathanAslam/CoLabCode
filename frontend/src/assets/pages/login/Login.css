@@ -1,13 +1,22 @@
 h1 {
     color: var(--white)
 }
+.login-page-background-cube {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    filter: blur(20px);
+}  
 
-
-.login-page {
+.login-page-top-layer {
     min-height: 100vh;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
 }
 
